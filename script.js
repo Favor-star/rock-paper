@@ -1,17 +1,17 @@
 
-const items = ["rock", "paper", "scissors"];
+const items = ["Rock", "Paper", "Scissors"];
 function playerSelection(callback) {
     var choice;
     document.getElementById("rock").addEventListener("click", function() {
-        choice = "rock";
+        choice = "Rock";
         callback(choice);
     });
     document.getElementById("paper").addEventListener("click", function() {
-        choice = "paper";
+        choice = "Paper";
         callback(choice);
     });
     document.getElementById("scissors").addEventListener("click", function(){
-        choice = "scissors";
+        choice = "Scissors";
         callback(choice);
     });
 }
@@ -25,27 +25,53 @@ playerSelection(function(choice) {
     // alert(choice);
     // alert(getComputerChoice());
   });
+let pcMarks = 0;
+let yourMarks = 0;
 function resultPrint(choice){
-    if (choice === getComputerChoice()){
-        alert("It's a tie");
+    let text;
+    let pcChoice = getComputerChoice();
+    if (choice == "Rock" && pcChoice == "Paper") {
+        text = `Computer win, ${pcChoice} beat ${choice}`;
+        pcMarks += 1;  
     }
-    else if (choice == "rock" && getComputerChoice() == "paper") {
-        alert("Computer win, paper beat rock");
+    else if (choice == "Rock" && pcChoice === "Scissors") {
+        text = `You win! ${choice} beat ${pcChoice}`;
+        yourMarks +=1;
     }
-    else if (choice == "rock" && getComputerChoice() === "scissors") {
-        alert("you win! Rock beat scissors");
+
+    else if (choice == "Paper" && pcChoice == "Rock"){
+        text = `You win! ${choice} beat ${pcChoice}`;
+        yourMarks +=1;
     }
-    else if (choice == "paper" && getComputerChoice() == "rock"){
-        alert("You won. Paper beat rock");
+
+    else if (choice == "Paper" && pcChoice == "Scissors"){
+       text = `Computer won! ${pcChoice} beat ${choice}`;
+       pcMarks += 1;
+    //    alert(`COMPUTER: ${pcChoice} and YOUR CHOICE: ${choice}`);
     }
-    else if (choice == "paper" && getComputerChoice() == "scissors"){
-        alert("computer won");
+
+    else if(choice == "Scissors" && pcChoice == "Rock") {
+        text = `Computer won! ${pcChoice} beat ${choice}`;
+        pcMarks += 1;
+        // alert(`COMPUTER: ${pcChoice} and YOUR CHOICE: ${choice}`);
     }
-    else if(choice == "scissors" && getComputerChoice() == "rock") {
-        alert("Computer won");
+
+    else if (choice == "Scissors" && pcChoice == "Paper"){
+        text = `You win! ${choice} beat ${pcChoice}`;
+        yourMarks +=1;
+        // alert(`COMPUTER: ${pcChoice} and YOUR CHOICE: ${choice}`);
     }
-    else if (choice == "scissors" && getComputerChoice() == "paper"){
-        alert("You win");
-    }
+    else if (choice === pcChoice){
+        text =`It's a tie! ${choice} equals ${pcChoice}`;
+     }
+
+     else {
+        text = "Press again!";
+     }
+
+    document.getElementById("statusText").innerHTML = text;
+    document.getElementById("yourscore").innerHTML = yourMarks;
+    document.getElementById("pcscore").innerHTML = pcMarks;
 }
-resultPrint();
+
+

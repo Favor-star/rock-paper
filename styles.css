@@ -19,6 +19,31 @@ body {
     font-size: .8em;
     color: #3F2305;
 }
+.instruction {
+    font-size: .9em;
+    margin: 10px 40px 0px 40px;
+    height: auto;
+    font-style: oblique;
+    width: auto;
+    border-bottom: double #3F2305;
+    border-top: double #3F2305;
+}
+.instruction .head {
+    padding-bottom: 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid red;
+    color: red;
+    width: auto;
+    display: inline-block;
+}
+.instruction .head::after {
+    content: " *";
+    font-size: 1.2rem;
+}
+.instruction .body {
+    padding-top: 0;
+    margin-top: 0;
+}
 img {
     object-fit: contain;
     width: 100px;
@@ -28,12 +53,13 @@ img {
     /* box-shadow:  */
 }
 .main-content {
-    margin: 200px auto;
+    margin: 120px auto ;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 10px; 
+    
 }
 .elements {
     display: flex;
@@ -74,6 +100,8 @@ img {
     font-weight: 900;
     font-style: oblique;
     font-family: 'Times New Roman', Times, serif;
+    font-size: .8rem;
+    color: red;
 }
 .info {
 text-align: center;
